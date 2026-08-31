@@ -1,0 +1,19 @@
+[watch]
+recursive = true
+rescan_on_start = true
+settle_ms = 900
+max_settle_ms = 8000
+burst_threshold = 20
+
+[scan]
+max_files = 10000
+max_structure_entries = 14
+
+[[project]]
+path = "."
+readme = "README.md"
+# name = "Override the manifest or directory name"
+# description = "Override the manifest description"
+ignore = ["fixtures/**", "vendor/**", "generated/**"]
+
+# Add more [[project]] entries to monitor several repositories from one daemon.

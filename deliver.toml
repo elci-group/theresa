@@ -1,0 +1,47 @@
+[[file]]
+path = "Cargo.toml"
+required = true
+forbid_regex = ["TODO", "FIXME"]
+
+[[file]]
+path = "src/main.rs"
+required = true
+forbid_regex = ["TODO", "FIXME", "unimplemented!"]
+
+[[file]]
+path = "src/lib.rs"
+required = true
+forbid_regex = ["TODO", "FIXME", "unimplemented!"]
+
+[[file]]
+path = "README.md"
+required = true
+min_size_bytes = 3000
+require_regex = ["Installation", "Configuration", "systemd", "How it works"]
+forbid_regex = ["TODO", "FIXME"]
+
+[[file]]
+path = "theresa.toml.example"
+required = true
+
+[[command]]
+name = "format check"
+cmd = ["cargo", "fmt", "--", "--check"]
+expect_exit = 0
+timeout_secs = 60
+
+[[command]]
+name = "test suite"
+cmd = ["cargo", "test", "--all-targets"]
+expect_exit = 0
+timeout_secs = 180
+
+[[command]]
+name = "clippy"
+cmd = ["cargo", "clippy", "--all-targets", "--", "-D", "warnings"]
+expect_exit = 0
+timeout_secs = 180
+
+[git]
+no_uncommitted_changes = false
+no_untracked_files = false
